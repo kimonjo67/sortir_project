@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Sortir!</title>
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
+</head>
+
+<body>
+
+  <!--==================== NAV BAR ===============================-->
+  
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <!-- Sortir Logo #1-->
+      <a id="logo-container" href="#Sortir!" class="brand-logo">Sortir</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#map">Map</a></li>
+        <li><a href="#event-table">Event List</a></li>
+      </ul>  
+    </div>
+  </nav>
+
+
+  <!-- ===============LARGE BANNER with image #1=========-->
+
+
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <!-- Sortir Logo #2-->
+        <h1 class="header center white-text text-darken-5" id="Sortir!">Sortir</h1>
+        <div class="row center">
+          <h6 class="header col s12 light instructions">Pour Votre Plaisir!</h6><h6 class="header col s12 light instructions">Find Your Fun!</h6>
+        </div>
+        <div class="container i-container">
+          <div class="row center">
+            <p class="header col s12 light" id="how-it-works">How It Works</p>
+          </div>
+          <div class="row center">
+            <div class="col l4 s12 light">
+              <h5 class="header">01</h5>
+              <p class="instructions">Search for Events</p>
+              <p>Select your preferred city,<br> event date and type.</p>
+            </div>
+            <div class="col l4 s12 light">
+              <h5 class="header">02</h5>
+              <p class="instructions">Review Event Information</p>
+              <p>Review the events <br>which meet your preferences.</p>
+            </div>
+            <div class="col l4 s12 light">
+              <h5 class="header">03</h5>
+              <p class="instructions">Request a Lyft!</p>
+              <p>Select an event<br>then order a Lyft to get there.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img id="MSPimage" src="assets/images/background1.jpg" alt="Minneapolis Skyline"></div>
+  </div>
+
+
+  <!-- ================= SEARCH FORM =====================-->
+
+
+  <div class="container z-depth-3">
+    <div id="event-view">
+      <form class="col s12 m4" id="search-form" name="myForm" action="" onsubmit="return validateForm()" method="post">
+
+        <!-- MODAL FOR FORM VALIDATION -->
+
+        <div id="myModal" class="modal">
+         <div class="modal-content">
+           <div class="modal-header">
+             <span class="close"><h4>&times;</h4></span>
+           </div>
+           <div class="modal-body">
+             <div class="container">
+                 <div class="row center">
+                   <div class="col  s12 light">
+                     <h4 class="header">Please enter location of the event!</h4>
+                   </div>
+                 </div>
+               </div>
+           </div>
+         </div>
+        </div>
+
+        <!-- City Search Input -->
+
+        <div class="row">
+          <div class="input-field col s4">
+            <label>Enter a City:</label>
+            <input type="text"  name="fname">
+          </div>
+
+          <!--Date Selector-->
+
+          <div class="input-field col s4">
+            <select class="Drop-down" id="event-date">
+
+              <!--default date set up for Today-->
+
+              <option value="Today" selected>Choose a date</option>
+              <option value="Today">Today</option>
+              <option value="Tomorrow">Tomorrow</option>
+              <option value= "This Week">This Week</option>
+              <option value="This Weekend">This Weekend</option>
+              <option value="Next Week">Next Week</option>
+            </select>
+            <label>Select a Date:</label>
+          </div>
+
+          <!-- Category Selector -->
+
+          <div class="input-field col s4">
+            <select id="event-category" multiple>
+              <option value="Art">Art</option>
+              <option value="Comedy">Comedy</option>
+              <option value="Concert">Concert</option>
+              <option value="Family">Family</option>
+              <option value="Festival">Festival</option>
+              <option value="Food">Food</option>
+              <option value="Gallery">Gallery</option>
+              <option value="Movies">Movies</option>
+              <option value="Museum">Museum</option>
+              <option value="Nightlife">Nightlife</option>
+              <option value="Outdoors">Outdoors</option>
+              <option value="Science">Science</option>
+              <option value="Sports">Sports</option>
+              <option value="Technology">Technology</option>
+            </select>
+            <label>Select Categories:</label>
+          </div>
+        </div>
+
+        <!--Serch button-->
+
+        <div class="row center-align">
+          <input class="btn-large waves-effect waves-light teal lighten-1"  type="submit"  value="Submit">
+        </div>
+      </form>
+    </div>
+  </div> 
+
+  <!--=========== LARGE BANNER #2 with image ============= -->
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h5 class="header col s12 light"></h5>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="assets/images/background2.jpg" alt="Vikings Players"></div>
+  </div>
+
+  <!--===================== MAP ========================= -->
+
+  <div id="map"></div>
+
+
+  <!--==================== TABLE =========================-->
+
+  <div class="container">
+    <div class="section">
+      <div class="row">
+        <div class="col s12 center">
+
+          <!--Table will populate here-->
+          <table class="striped" id="event-table">
+            <thead>
+              <tr>
+                <th>Number</th>
+                <th>Date & Time</th>
+                <th>Name of Event</th>
+                <th>Venue</th>
+                <th>City Name</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+      <div class="row">
+        <div id="events"></div>
+      </div>
+    </div>
+  </div>
+
+  <!--============ LARGE BANNER with image #3 ============ -->
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="assets/images/background3.jpg" alt="Spoon and Cherry"></div>
+  </div>
+
+  <!--================= FOOTER ============================-->
+  
+  <footer class="page-footer teal">
+    <div class="container center">
+      <div class="row">
+        <div class="col l6 s12">
+          <p>Site Map</p>
+          <ul>
+            <li><a class="white-text" href="#Sortir!">Home</a></li>
+            <li><a class="white-text" href="#map">Map</a></li>
+            <li><a class="white-text" href="#table">Event List</a></li>
+          </ul>
+        </div>
+        <div class="col l6 s12">
+          <p>Contact</p>
+          <ul>
+            <li>Dani Carter</li>
+            <li>Edyta Dudek</li>
+            <li>Kayla Kotewall</li>
+            <li>Sam Mwangi </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container center">
+      Made by <a class="brown-text text-lighten-3">Ydudes</a>
+      </div>
+    </div>
+  </footer>
+  <!--  Scripts-->
+  <!--Lodash-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+  <!--Google Maps-->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApu_fsoWF0jqAI5bZVZ5hiWvibSNrFmms&callback=initMap"
+    async defer></script>
+  <!--JQuery-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <!--App.js-->
+  <script src="assets/javascript/app.js"></script>
+  <!--Materialize-->
+  <script src="assets/javascript/materialize.js"></script>
+  <!--Init.js-->
+  <script src="assets/javascript/init.js"></script>
+</body>
+</html>
+
